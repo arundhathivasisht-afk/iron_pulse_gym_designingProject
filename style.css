@@ -1,0 +1,576 @@
+/* 
+   GENERAL STYLES
+   Shared across all pages — fonts, variables,
+   resets, navbar, hero, buttons, footer, etc.
+*/
+
+
+/* 1. GOOGLE FONTS — Inter for body, Outfit for headings */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Outfit:wght@400;600;700;800;900&display=swap');
+
+
+/* 2. CSS VARIABLES — our colour palette and spacing values */
+:root {
+  --bg-dark: #08090d;
+  --bg-card: #161820;
+  --bg-card-hover: #1e212c;
+
+  --accent: #e63946;
+  --accent-gold: #f0a500;
+  --accent-blue: #3a86ff;
+  --accent-blue-glow: #4facfe;
+  --accent-blue-deep: #1e3a8a;
+
+  --text-primary: #f1f1f1;
+  --text-secondary: #9ca3af;
+  --border-color: rgba(255, 255, 255, 0.08);
+
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --radius: 16px;
+  --radius-sm: 8px;
+  --transition: 0.3s ease;
+}
+
+/* 3. ANIMATION — simple fade-in on page load */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 4. GLOBAL RESET & BASE STYLES */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--accent-gold);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* 5. NAVIGATION BAR — stays at the top of the page */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
+  background: rgba(8, 9, 13, 0.95);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* logo text styling */
+.navbar .logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+/* the "Pulse" part of the logo gets the accent colour */
+.navbar .logo span {
+  color: var(--accent);
+}
+
+/* navigation links row */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0.4rem 0;
+  transition: color var(--transition);
+}
+
+/* simple colour change on hover */
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+/* highlight the current page link in red */
+.nav-links a.active {
+  color: var(--accent);
+}
+
+/* 6. HERO BANNER — full-width centred banner with background image */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* dark overlay so text stays readable over any background image */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(8, 9, 13, 0.75);
+  z-index: 0;
+}
+
+/* hero children sit above the dark overlay */
+.hero>* {
+  position: relative;
+  z-index: 1;
+}
+
+/* each page has its own hero background */
+.hero-home {
+  background-image: url('images/hero-home.png');
+}
+
+.hero-services {
+  background-image: url('images/hero-services.png');
+}
+
+.hero-about {
+  background-image: url('images/hero-about.png');
+}
+
+/* main heading — large, bold, white */
+.hero h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 1.2rem;
+  color: #ffffff;
+  animation: fadeInUp 0.8s ease both;
+}
+
+/* subtitle text below the heading */
+.hero p {
+  max-width: 620px;
+  color: var(--text-secondary);
+  font-size: 1.15rem;
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+/* 7. BUTTONS — primary (solid) and outline variants */
+
+.btn {
+  display: inline-block;
+  padding: 0.9rem 2.4rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+/* solid red button */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+}
+
+.btn-primary:hover {
+  background: #ff1a2e;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+}
+
+/* transparent button with red border */
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.btn-outline:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* 8. REUSABLE SECTION LAYOUT */
+
+.section {
+  padding: 5rem 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease both;
+}
+
+/* section heading */
+.section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* the highlighted word inside section titles uses accent red */
+.section-title span {
+  color: var(--accent);
+}
+
+/* smaller text below the section title */
+.section-subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  font-size: 1rem;
+}
+
+/* 9. DIVIDER — small coloured bar under section titles */
+
+.divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-blue));
+  border-radius: 4px;
+  margin: 0 auto 2rem;
+}
+
+/* 10. FOOTER */
+
+.footer {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 3rem;
+}
+
+/* 
+   INDEX PAGE STYLES
+   Styles specific to the homepage (index.html)
+*/
+
+/* 11. FEATURE LIST — pill-shaped selling points on the homepage */
+
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+/* each feature pill — dark card style */
+.feature-list li {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1rem 1.8rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* hover: blue border and slight lift */
+.feature-list li:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 15px rgba(58, 134, 255, 0.15);
+}
+
+/* icon colour inside feature pills */
+.feature-list li .icon {
+  color: var(--accent-blue-glow);
+  font-size: 1.2rem;
+}
+
+/* 
+   SERVICES PAGE STYLES
+   Styles specific to the services page (services.html)
+*/
+
+/* 12. MEMBERSHIP TABLE — pricing plans on the services page */
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 2rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+/* table header — gradient background */
+thead {
+  background: linear-gradient(135deg, var(--accent), var(--accent-blue-deep), var(--accent-blue));
+}
+
+thead th {
+  padding: 1.1rem 1.5rem;
+  text-align: left;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.85rem;
+  color: #fff;
+}
+
+tbody td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.95rem;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* alternate row shading for readability */
+tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* subtle highlight when hovering a row */
+tbody tr:hover {
+  background: rgba(58, 134, 255, 0.08);
+}
+
+/* price column stands out in blue */
+tbody td:last-child {
+  color: var(--accent-blue-glow);
+  font-weight: 700;
+}
+
+/* 13. SERVICE CARDS — three cards in a row on the services page */
+
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  flex: 1 1 280px;
+  max-width: 340px;
+  transition: all var(--transition);
+}
+
+/* hover: blue border, lift up, and shadow */
+.card:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 30px rgba(58, 134, 255, 0.12);
+  background: var(--bg-card-hover);
+}
+
+/* emoji / icon at the top of each card */
+.card-icon {
+  font-size: 2.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* 
+   ABOUT PAGE STYLES
+   Styles specific to the about page (about.html)
+*/
+
+/* 14. ABOUT BLOCKS — mission, team, contact sections */
+
+.about-block {
+  margin-bottom: 3rem;
+}
+
+/* sub-headings in the about page — accent red */
+.about-block h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+}
+
+.about-block p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 750px;
+}
+
+/* team member cards laid out in a row */
+.trainers-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.trainer-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 2rem;
+  flex: 1 1 220px;
+  max-width: 280px;
+  text-align: center;
+  transition: all var(--transition);
+}
+
+/* hover: blue border and lift */
+.trainer-card:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(58, 134, 255, 0.15);
+}
+
+/* circular avatar with gradient background */
+.trainer-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-blue));
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* when there's a photo inside the avatar circle */
+.trainer-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 50%;
+}
+
+.trainer-card h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+/* role label shown below the name */
+.trainer-card .role {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* contact info box with a blue top border */
+.contact-info {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-top: 2px solid var(--accent-blue);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-top: 1.5rem;
+}
+
+.contact-info p {
+  color: var(--text-secondary);
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.contact-info strong {
+  color: var(--text-primary);
+}

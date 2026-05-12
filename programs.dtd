@@ -1,0 +1,13 @@
+<!-- DTD for Iron Pulse Gym Programs — defines the valid structure of programs.xml -->
+
+<!-- Root element must contain one or more program entries (the "+" means at least one) -->
+<!ELEMENT programs (program+)>
+
+<!-- Each program needs these four child elements in this exact order -->
+<!ELEMENT program (name, trainer, duration, price)>
+
+<!-- Individual fields — #PCDATA means they hold plain text content -->
+<!ELEMENT name    (#PCDATA)>
+<!ELEMENT trainer (#PCDATA)>
+<!ELEMENT duration (#PCDATA)>
+<!ELEMENT price   (#PCDATA)>

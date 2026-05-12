@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Links to the XSL stylesheet that transforms this XML into a styled HTML page -->
+<?xml-stylesheet type="text/xsl" href="programs.xsl"?>
+<!-- DTD validation — ensures every program has name, trainer, duration, and price -->
+<!DOCTYPE programs SYSTEM "programs.dtd">
+
+<!-- All gym training programs -->
+<programs>
+
+  <!-- 8-week strength course for building foundations -->
+  <program>
+    <name>Strength Foundations</name>
+    <trainer>Arnold Schwarzenegger</trainer>
+    <duration>8 Weeks</duration>
+    <price>Aed 149.99</price>
+  </program>
+
+  <!-- 6-week high-intensity interval training course -->
+  <program>
+    <name>HIIT Burn</name>
+    <trainer>Ronnie Coleman</trainer>
+    <duration>6 Weeks</duration>
+    <price>Aed 99.99</price>
+  </program>
+
+  <!-- 12-week lean muscle building programme -->
+  <program>
+    <name>Lean Muscle Builder</name>
+    <trainer>Arnold Schwarzenegger</trainer>
+    <duration>12 Weeks</duration>
+    <price>Aed 199.99</price>
+  </program>
+
+  <!-- 4-week cardio kickstart for beginners -->
+  <program>
+    <name>Cardio Kickstart</name>
+    <trainer>Ronnie Coleman</trainer>
+    <duration>4 Weeks</duration>
+    <price>Aed 59.99</price>
+  </program>
+
+  <!-- 8-week nutrition and performance coaching (&amp; is used because raw & isn't valid in XML) -->
+  <program>
+    <name>Nutrition &amp; Performance</name>
+    <trainer>Chris Bumstead</trainer>
+    <duration>8 Weeks</duration>
+    <price>Aed 129.99</price>
+  </program>
+
+  <!-- 16-week full-body transformation package -->
+  <program>
+    <name>Total Body Transformation</name>
+    <trainer>Arnold Schwarzenegger</trainer>
+    <duration>16 Weeks</duration>
+    <price>Aed 299.99</price>
+  </program>
+
+</programs>
