@@ -1,0 +1,9 @@
+1. Go into the Folder where the web project is saved
+2. right click the folder and open in terminal
+3.paste this command in the terminal
+
+python -m http.server
+
+4. Then open the browser and search this on the search bar
+
+http://localhost:8000
